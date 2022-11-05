@@ -17,21 +17,30 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     continent: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.STRING,
       allowNull: false,
     },
     capital: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.STRING,
+      // type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
     },
     subregion: {
       type: DataTypes.STRING,
     },
     area: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
     },
     population: {
       type: DataTypes.INTEGER,
     },
   });
 };
+// ID (Código de 3 letras) *
+// Nombre *
+// Imagen de la bandera *
+// Continente *
+// Capital *
+// Subregión
+// Área
+// Población
