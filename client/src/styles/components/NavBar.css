@@ -1,0 +1,13 @@
+.navbar__container{
+    display: flex;
+    justify-content: space-between;
+    background-color: lightgray;
+    font-size: large;
+}
+
+.nav-active{
+    font-weight: bold;
+}
+.tr{
+    opacity: 70%;
+}

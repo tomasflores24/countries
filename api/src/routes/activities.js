@@ -1,9 +1,7 @@
 const Router = require('express');
 const router = Router();
-// const {  }  = require('../controllers/activities-controllers.js');
+const { createActivity }  = require('../controllers/activity-controllers.js');
 
-router.get('/', (req,res)=>{
-    res.send("ACTIVITY PA JJIJIJ")
-});
+router.post('/', createActivity);
 
 module.exports = router;

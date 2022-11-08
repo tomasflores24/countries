@@ -1,48 +1,21 @@
 const axios = require('axios');
 const { Country, Activity } = require('../db.js');
 
-// ID (Código de 3 letras) *
-// Nombre *
-// Imagen de la bandera *
-// Continente *
-// Capital *
-// Subregión
-// Área
-// Población
-
-const getCountries = async(req, res) => {
+const getCountries = async(req, res, next) => {
     try {
-        // const countries = (await axios('https://restcountries.com/v3/all'))
-            // .data
-            // .map( c => c.cca3 ? c.cca3 : "NULO PA")
-            // .map( c => {
-                // const capital = c.capital ? c.capital[0].toLowerCase() : 'not capital';
-                // console.log(capital)
-                // const capital = "DEF";
+        // const countries = ( await axios('https://restcountries.com/v3/all') ).data
+        // .map( c => c.cca3 )
 
-                // return {
-                    // id: c.cca3,
-                    // name : c.name.common,
-                    // img : c.flags[0],
-                    // continent : c.continents[0],
+        // return res.json(countries)
 
-                    // capital : capital,
-                    // capital : c.capital ? c.capital.toLowerCase() : 'not capital',
+        if(req.query.name) return next();
 
-
-                    // subregion: c.subregion,
-                    // area : c.area,}
-                    // population : c.population,
-                // }
-            // });
-    // return res.json({msj : 'getCountries',all : countries });
-
-
-        let country_DB = await Country.findAll();
+        let country_DB = await Country.findAll( { attributes: ['id', 'name', 'img','continent'] });
         
         if( !country_DB.length ){
 
-            let countries = (await axios('https://restcountries.com/v3/all')) // TODO CAMBIAR A CONST
+
+            const countries = (await axios('https://restcountries.com/v3/all'))
             .data
             .map( c => {
                 return {
@@ -50,8 +23,8 @@ const getCountries = async(req, res) => {
                     name : c.name.common,
                     img : c.flags[0],
                     continent : c.continents[0],
-
-                    capital : c.capital ? c.capital[0].toLowerCase() : 'not capital',
+                    
+                    capital : c.capital ? c.capital[0].toLowerCase() : 'no tiene capital',
                     subregion: c.subregion,
                     area : c.area,
                     population : c.population,
@@ -60,27 +33,68 @@ const getCountries = async(req, res) => {
             
             await Country.bulkCreate(countries);
 
-            country_DB = ( await Country.findAll() ).map( c => c.dataValues );
-
-            console.log("SE CREO");
+            country_DB = ( await Country.findAll({ attributes: ['id', 'name', 'img','continent'] }) );
         }
-
-        return res.json({msj : 'getCountries', length:country_DB.length , all : country_DB });
-
+        return res.json({msj : 'getCountries' , length:country_DB.length , all : country_DB });
+        
     } catch (err) {
-        console.log(err.message);
         return res.status(404).json({msj : err.message, err});
     }
 }
-// ? carácter con secuencia de bytes 0xc4 0x93 en codificación «UTF8» no tiene equivalente en la codificación «WIN1252»
 
-// [ ] GET /countries:
-// En una primera instancia deberán traer todos los países desde restcountries y guardarlos en su propia base de datos y luego ya utilizarlos desde allí (Debe retonar sólo los datos necesarios para la ruta principal)
-// Obtener un listado de los paises.
+const getxName = async(req, res) => {
+    try {
+        const {name} = req.query;
 
-// * Termine la ruta de get pero falta revidar algunas cosas por las dudsd 
-// ! ...
+        const countriesxName = (await axios(`https://restcountries.com/v3/name/${name}`))
+        .data
+        .map( c => {
+            return {
+                name: c.name.common,
+                id: c.cca3,
+                // capital: c.capital,
+                // region: c.region,
+                // subregion : c.subregion,
+                // area : c.area,    
+                // population : c.population, 
+                // continents : c.continents,
+                flags : c.flags[0]
+            }
+        });
+        return res.json({msj : 'getName', coun : countriesxName});
+
+    } catch (err) {
+        return res.status(404).json( {message: 'No se encontro.',msjErr : err.message, err });
+    }
+}
+
+const getxId = async(req, res) => {
+    try {
+        const {idPais} = req.params;
+        const countrieXid = (await axios(`https://restcountries.com/v3/alpha/${idPais}`)).data
+        .map( c => {
+            return {
+                id: c.cca3,
+                name : c.name.common,
+                img : c.flags[0],
+                continent : c.continents[0],
+                capital : c.capital,
+                subregion : c.subregion,
+                area : c.area, //   (Mostrarla en km2 o millones de km2)
+                population : c.population,     
+            }
+            //TODO => Actividades turísticas con toda su información asociada
+        });
+        return res.json({msj : 'getxId', infoxId:countrieXid[0]});
+    } catch (err) {
+        console.log(err.message);
+        return res.status(404).json({msjErr : err.message, msj:'No se encontro el pais por CODE', err});
+    }
+}
 
 module.exports = {
-    getCountries
+    getCountries,
+    getxName,
+    getxId,
 }
+

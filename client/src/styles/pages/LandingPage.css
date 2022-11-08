@@ -1,0 +1,9 @@
+.link{
+
+}
+.link:active{
+    background-color: red;
+}
+.link:hover{
+    opacity: 50%;
+}

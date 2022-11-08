@@ -1,12 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import { Provider } from 'react-redux';
+
+import store from './redux/store';
+import NavBar from './components/NavBar';
+import LandingPage from './pages/LandingPage';
+import Main from './pages/Main';
+import CreateActivity from './pages/CreateActivity';
+import DetailContrie from './pages/DetailContrie';
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Provider store={store}>
+        <NavBar />
+        <Routes>
+          <Route path='/' element={<LandingPage />}/>
+          <Route path='/main' element={<Main />}/>
+          <Route path='/detail/:id' element={<DetailContrie />}/>
+          <Route path='/create' element={<CreateActivity />}/>
+        </Routes>
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
