@@ -4,8 +4,7 @@ const { Country, Activity } = require('../db.js');
 const getCountries = async(req, res, next) => {
     try {
         // const countries = ( await axios('https://restcountries.com/v3/all') ).data
-        // .map( c => c.cca3 )
-
+        // .map( c => c.continents )
         // return res.json(countries)
 
         if(req.query.name) return next();

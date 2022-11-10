@@ -6,6 +6,8 @@ export const GET_COUNTRIES_NAME = 'GET_COUNTRIES_NAME';
 export const CLEAR_DETAIL = 'CLEAR_DETAIL';
 export const IS_LOADING = 'IS_LOADING';
 
+export const GET_COUNTRIES_FILTER = 'GET_COUNTRIES_FILTER';
+
 export function getCountries(payload){
     return (dispatch) => {
         dispatch({type:IS_LOADING, payload: true});
@@ -13,10 +15,10 @@ export function getCountries(payload){
         axios('http://localhost:3001/countries')
         .then( resp => resp.data)
         .then( countries => {
-            dispatch({type:GET_COUNTRIES, payload: countries.all});
+            dispatch({type:GET_COUNTRIES, payload: countries.all})
             dispatch({type:IS_LOADING, payload: false});
         } )
-        .catch( err => console.log(err) );
+        .catch( err => dispatch({type:'ERROR'}) );
         
     }
 }
@@ -35,13 +37,14 @@ export function getCountrieId(payload){
     }
 }
 
-export function getCountriesName(payload){
+export function getCountriesName(payload){ 
     return (dispatch) => {
         dispatch({type:IS_LOADING, payload: true});
         axios(`http://localhost:3001/countries?name=${payload}`)
         .then(resp => resp.data)
         .then( countriesName => {
-            dispatch({type: GET_COUNTRIES_NAME, payload: countriesName});
+            console.log(countriesName.coun)
+            dispatch({type: GET_COUNTRIES_NAME, payload: countriesName.coun});
             dispatch({type:IS_LOADING, payload: false});
         })
 
@@ -52,5 +55,9 @@ export function clearDetail(payload){
     return (dispatch) => dispatch({type : CLEAR_DETAIL, payload: {}});
 }
 
-
+export function getCountriesFilter(payload){
+    return (dispatch) => {
+        dispatch( {type : GET_COUNTRIES_FILTER, payload } );
+    }
+}
 

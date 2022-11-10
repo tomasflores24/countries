@@ -1,4 +1,4 @@
-import {GET_COUNTRIES, GET_COUNTRIE_DETAIL, GET_COUNTRIES_NAME, CREATE_ACTIVITY,CLEAR_DETAIL, IS_LOADING} from '../action';
+import {GET_COUNTRIES, GET_COUNTRIE_DETAIL, GET_COUNTRIES_NAME, CREATE_ACTIVITY,CLEAR_DETAIL, IS_LOADING, GET_COUNTRIES_FILTER} from '../action';
 
 const initialState = {
     countries: [],
@@ -6,6 +6,7 @@ const initialState = {
     countrie_name: [],
     create_activity: {},
     is_loading: false,
+    countries_filter: []
 }
 
 const rootReducer = (state = initialState, { type , payload}) => {
@@ -13,7 +14,15 @@ const rootReducer = (state = initialState, { type , payload}) => {
     switch (type) {
 
         case GET_COUNTRIES:
-          return {...state, countries : payload};
+          return {...state, countries : payload, countrie_continent: payload};
+
+        case GET_COUNTRIES_FILTER:
+          if(payload.typeFilter === 'CONTINENT'){
+            console.log("REDUCE FUIKLTER",payload)
+            const data = state.countries.filter( c => c.continent === payload.selectInfo );
+            return {...state, countries_filter: data };
+          }
+          // ACTIVITY
         
         case GET_COUNTRIE_DETAIL:
             return {...state, countrie_detail: payload};
