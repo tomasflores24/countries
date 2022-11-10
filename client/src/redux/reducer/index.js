@@ -14,15 +14,15 @@ const rootReducer = (state = initialState, { type , payload}) => {
     switch (type) {
 
         case GET_COUNTRIES:
-          return {...state, countries : payload, countrie_continent: payload};
+          return {...state, countries : payload, countries_filter: payload};
 
         case GET_COUNTRIES_FILTER:
-          if(payload.typeFilter === 'CONTINENT'){
-            console.log("REDUCE FUIKLTER",payload)
-            const data = state.countries.filter( c => c.continent === payload.selectInfo );
-            return {...state, countries_filter: data };
-          }
+          if(payload === 'ALL') return {...state, countries_filter: state.countries }
+          const filterXcontinent = [...state.countries].filter( c => c.continent === payload );
+          return {...state, countries_filter: filterXcontinent};
+          
           // ACTIVITY
+          break;
         
         case GET_COUNTRIE_DETAIL:
             return {...state, countrie_detail: payload};
