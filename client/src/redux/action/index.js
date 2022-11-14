@@ -18,11 +18,11 @@ export function getCountries(payload){
             dispatch({type:GET_COUNTRIES, payload: countries.all})
             dispatch({type:IS_LOADING, payload: false});
         } )
-        .catch( err => dispatch({type:'ERROR'}) );
+        .catch( err => console.log(`Error: ${err.message}`, err) );
+        // .catch( err => dispatch({type:'ERROR'}) );
         
     }
 }
-
 
 export function getCountrieId(payload){
     return (dispatch) => {
@@ -43,10 +43,11 @@ export function getCountriesName(payload){
         axios(`http://localhost:3001/countries?name=${payload}`)
         .then(resp => resp.data)
         .then( countriesName => {
-            console.log(countriesName.coun)
+            // console.log(countriesName.coun)             
             dispatch({type: GET_COUNTRIES_NAME, payload: countriesName.coun});
             dispatch({type:IS_LOADING, payload: false});
         })
+        .catch( err => dispatch({type: GET_COUNTRIES_NAME, payload : []}))
 
     }
 }
@@ -61,3 +62,20 @@ export function getCountriesFilter(payload){
     }
 }
 
+
+
+export function CreateActivityForm(payload){
+    return (dispatch) => {
+        console.log("PAYLOAD", payload);
+        axios.post('http://localhost:3001/activities',{
+            name : payload.name,
+            difficulty: payload.difficulty,
+            duration: payload.duration,
+            season: payload.season,
+            // id: ['ATF', 'COL', 'VEN']
+            id: 'ATF'
+
+        })
+        // ? Falta usar el ID de pais que deberia llegar para hacer la relacion.
+    }
+}

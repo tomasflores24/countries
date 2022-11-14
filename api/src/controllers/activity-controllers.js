@@ -18,8 +18,8 @@ const createActivity = async(req,res) => {
         return res.json({msj:'Actividad Creata jiji'});
         
    }catch(error){
-        return res.status(404).json({error: error.message})
-   }
+        return res.status(404).json({msj: "Error EN la ruta de create",error: error.message, error})
+   }''
 //TODO Falta optimizar mas este CONTROLLER
 
 } 
