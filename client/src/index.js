@@ -10,18 +10,20 @@ import LandingPage from './pages/LandingPage';
 import Main from './pages/Main';
 import CreateActivity from './pages/CreateActivity';
 import DetailContrie from './pages/DetailContrie';
+import Activities from './pages/Activities';
 import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <NavBar />
+        {/* <NavBar /> */}
         <Routes>
           <Route path='/' element={<LandingPage />}/>
           <Route path='/main' element={<Main />}/>
           <Route path='/detail/:id' element={<DetailContrie />}/>
           <Route path='/create' element={<CreateActivity />}/>
+          <Route path='/activities' element={<Activities />}/>
         </Routes>
       </Provider>
     </BrowserRouter>
@@ -35,17 +37,14 @@ ReactDOM.render(
 reportWebVitals();
 
 // * Falta hacer ---
-// Cuando me traig los paisess , tambien traerme la actividad incluida
 // 
+// validar que no cree 2 actividades con el mismo nombre
 // 
+// configurar bien los seelct del MAIN 
 // 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
+//  renderizar las actividades 
+//  
+//  
 // 
 // 
 // 

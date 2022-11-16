@@ -4,7 +4,7 @@ function Loading() {
   return (
     <div>
       <img src={dyj} alt="fd" className='messi'/>
-    </div>
+    </div> 
   )
 }
 

@@ -6,4 +6,6 @@ router.get('/:idPais', getxId );
 router.get('/', getCountries );
 router.get('/', getxName );
 
-module.exports = router;
+
+
+module.exports = router; 

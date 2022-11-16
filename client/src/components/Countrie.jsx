@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-function Countrie({id, name, continent, img}) {
+function Countrie({id, name, continent, img, population}) {
   return (
     
     <div className='countrie__container'>
@@ -9,6 +9,7 @@ function Countrie({id, name, continent, img}) {
         <p>Name : {name}</p>
         <p>Continent : {continent}</p>
         <p>img : {img}</p>
+        <p>Population : {population}</p>
         <Link to={`/detail/${id}`}>Ver detalle</Link>
         <hr />
     </div>

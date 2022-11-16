@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../styles/pages/CreateActivity.css'
 import {useDispatch, useSelector} from 'react-redux';
 import { CreateActivityForm, getCountries } from '../redux/action';
+import NavBar from '../components/NavBar';
 // ? Cambiar el duration en el model a INTEGER.
 // name difficulty duration season
 
@@ -20,11 +21,12 @@ function CreateActivity() {
 
   useEffect(() => {
     dispatch(getCountries());
+    
   }, [dispatch]);
 
   const setDataForm  = (e) =>{
     // const {value,name, id} = e.target;
-    const {value,name} = e.target;
+    const {value,name} = e.target; 
 
     if( name !== 'countriesActivity' ){
       setForm( {...form, [name]: value} );
@@ -69,7 +71,7 @@ function CreateActivity() {
   //   e.preventDefault();
   //   setForm({...form, countriesActivity: form.countriesActivity.filter( c => c !== name )});    
   // } 
-  
+   
   // const countriesActivity = (e) =>{
   //   e.preventDefault();
   //   setForm({...form, countriesActivity: []});
@@ -80,49 +82,53 @@ function CreateActivity() {
   } 
 
     return (
-      <form className='form__container' id='form' onSubmit={handleSubmit}>
+      <>
+        <NavBar />
+        <form className='form__container' id='form' onSubmit={handleSubmit}>
 
-      <label htmlFor="name">Name</label>
-      <input type="text" id='name' value={form.name} className='name__input ' name='name' onChange={setDataForm}/> <br />
+        <label htmlFor="name">Name</label>
+        <input type="text" id='name' value={form.name} className='name__input ' name='name' onChange={setDataForm}/> <br />
 
-      <label htmlFor="difficulty">difficulty</label>
-      <input type="range" min="1" max="5" defaultValue={1} name='difficulty' id='difficulty' onChange={setDataForm}/> <br />
+        <label htmlFor="difficulty">difficulty</label>
+        <input type="range" min="1" max="5" defaultValue={1} name='difficulty' id='difficulty' onChange={setDataForm}/> <br />
 
-      <label htmlFor="duration">duration</label>
-      <input type="range" min="1" max="6" defaultValue={1} name='duration' id='duration' onChange={setDataForm}/> <br />
+        <label htmlFor="duration">duration</label>
+        <input type="range" min="1" max="6" defaultValue={1} name='duration' id='duration' onChange={setDataForm}/> <br />
 
-      <select name="season" id="season" onChange={setDataForm}>
-        <option value='summer'>summer</option>
-        <option value='autumn'>autumn</option>
-        <option value='winter'>winter</option>
-        <option value='spring'>spring</option>
-      </select>
+        <select name="season" id="season" onChange={setDataForm}>
+          <option value='summer'>summer</option>
+          <option value='autumn'>autumn</option>
+          <option value='winter'>winter</option>
+          <option value='spring'>spring</option>
+        </select>
 
-    <br/>
-      <select name="countriesActivity" id="countriesActivity" onChange={setDataForm}>
-        <option value="">Seleccionar Countries</option>
-        {countries.length && countries.map( c => <option key={c.id} value={c.name}>{c.name}</option>)}
-      </select> <br />
+      <br/>
+        <select name="countriesActivity" id="countriesActivity" onChange={setDataForm}>
+          <option value="">Seleccionar Countries</option>
+          {countries.length && countries.map( c => <option key={c.id} value={c.name}>{c.name}</option>)}
+        </select> <br />
 
-      <input type='submit' className='btn' id='btn'/>
-      {/* <hr />
-      <div>
-        <p>Name : {form.name}</p>
-        <p>difficulty : {form.difficulty}</p>
-        <p>duration : {form.duration}</p>
-        <p>season : {form.season}</p>
+        <input type='submit' className='btn' id='btn'/>
+
         <hr />
-      </div>
-      {form.countriesActivity && form.countriesActivity.map( (c,i) => (
-        <div key={i}>
-          <p>{c}</p>
-          <button key={i} onClick={e => deleteCountry(e,c)}>x</button>
-          <br />
+        <div>
+          <p>Name : {form.name}</p>
+          <p>difficulty : {form.difficulty}</p>
+          <p>duration : {form.duration}</p>
+          <p>season : {form.season}</p>
+          <hr />
         </div>
-      ))}
-      {form.countriesActivity.length > 0 && <button onClick={countriesActivity}>Clear</button>} */}
+        {form.countriesActivity && form.countriesActivity.map( (c,i) => (
+          <div key={i}>
+            <p>{c}</p>
+            {/* <button key={i} onClick={e => deleteCountry(e,c)}>x</button> */}
+            <br />
+          </div>
+        ))}
+        {/* {form.countriesActivity.length > 0 && <button onClick={countriesActivity}>Clear</button>} */}
 
-    </form>
+        </form>
+      </>
   )
 }
 

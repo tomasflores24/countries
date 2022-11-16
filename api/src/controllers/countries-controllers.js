@@ -9,7 +9,7 @@ const getCountries = async(req, res, next) => {
 
         if(req.query.name) return next();
 
-        let country_DB = await Country.findAll( { attributes: ['id', 'name', 'img','continent'], include: Activity });
+        let country_DB = await Country.findAll( { attributes: ['id', 'name', 'img','continent','population'], include: Activity });
         
         if( !country_DB.length ){
 
@@ -32,17 +32,12 @@ const getCountries = async(req, res, next) => {
             
             await Country.bulkCreate(countries);
 
-            country_DB = ( await Country.findAll({ attributes: ['id', 'name', 'img','continent'], include: Activity }) );
+            country_DB = ( await Country.findAll({ attributes: ['id', 'name', 'img','continent', 'population'], include: Activity }) );
 
         }
         
-        const dato = await Country.findAll({
-            where: {id : 'ATF'},
-            include: Activity
-        })
         
-        console.log("DATO => ",dato)
-        
+                
         return res.json({msj : 'getCountries' , length:country_DB.length , all : country_DB });
         
     } catch (err) {
