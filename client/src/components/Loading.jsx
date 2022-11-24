@@ -1,11 +1,8 @@
 import React from 'react'
-import dyj from '../assets/messi.jpg'
+import '../styles/components/Loading.css';
+
 function Loading() {
-  return (
-    <div>
-      <img src={dyj} alt="fd" className='messi'/>
-    </div> 
-  )
+  return (<h1 className='loading__title'>LOADING...</h1>);
 }
 
 export default Loading

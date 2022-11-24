@@ -1,0 +1,42 @@
+.activities__detail__container{
+    width: 70vw;
+    margin: 0 auto 0 auto;
+    
+    color: white;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.activity__detail{
+    margin-bottom: 50px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid;
+}
+
+.info__activity{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+.container__countries__detail{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.img__activities{
+    width: 20%;
+    border-radius: 5px;
+}
+
+.inf{
+    margin-bottom: 25px;
+    padding: 3px 5px;
+    border-radius: 10px;
+}
+
+.inf>p{
+    margin: 0;
+    margin-bottom: 5px;
+}

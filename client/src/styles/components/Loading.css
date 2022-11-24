@@ -1,0 +1,12 @@
+.img__loading{
+    width: 100%;
+    padding: 100px;
+}
+
+.loading__title{
+    margin-bottom: 45vh;
+    margin-top: 250px;
+    color: white;
+    text-align: center;
+    font-size: xxx-large;
+}

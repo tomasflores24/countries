@@ -1,0 +1,13 @@
+.input__search{border-radius: 5px;}
+.input__search:focus{
+    border: none;
+    outline: none;
+}
+
+.btn__search{
+    border: 1px solid black;
+    border-radius: 5px;
+    transition: .3s;
+}
+
+.btn__search:hover{background-color: #f5f5dcd2;}

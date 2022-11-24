@@ -19,17 +19,17 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-const {Country,Activity} = require('./src/db') // !
 
 const axios = require('axios'); // !
 // Syncing all the models at once.
 conn.sync({ force: true }).then( () => {
   server.listen(3001, async() => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
+
     await axios('http://localhost:3001/countries'); // !
 
     await axios.post('http://localhost:3001/activities',{
-            name : "nadar con tiburones 1",
+            name : "nadar",
             difficulty: 1,
             duration: "3",
             season: "summer",
@@ -42,7 +42,6 @@ conn.sync({ force: true }).then( () => {
             difficulty: 3,
             duration: "1",
             season: "autumn",
-
             nameCountries: ["Grenada", "Trinidad and Tobago", "Japan", "Haiti"],
     })
 

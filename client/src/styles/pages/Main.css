@@ -1,0 +1,60 @@
+.container__countries{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+} 
+.container__main>p{color: white;}
+
+.container__select{
+    display: flex;
+    justify-content: flex-end;
+}
+.btn__refresh{
+    position: absolute;
+    top: 72px;
+    left: 0;
+
+    padding: 5px;
+    border-radius: 10px;
+}
+.btn__refresh:hover{background-color: lightgray;}
+
+.container__select>select{
+    width: 20%;
+    border: none;
+
+    background-color: transparent;
+    color: white;
+}
+.container__select>select:focus{background-color: #27233c;}
+.container__select>select:disabled{opacity: 30%;}
+
+.length__countries{
+    margin-bottom: 0px;
+
+    font-weight: bold;
+    font-size: x-large;
+    text-align: center;
+}
+
+.btn__page{
+    padding-bottom: 30px;
+    text-align: center;
+}
+.btn__page>button{
+    margin: 0 15px;
+    padding: 3px 10px;
+    
+    border: 1px solid white;
+    border-radius: 3px;
+    
+    font-weight: bold;
+    font-size: x-large;
+    transition: .3s;
+}
+.btn__page>button:hover{
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+}
+.btn__page>button:active{background-color: darkblue;}

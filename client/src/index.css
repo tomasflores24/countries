@@ -5,22 +5,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+  min-height: 100vh;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  background-image: url('./assets/paises.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
 }
+code {font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',monospace;}
+a{text-decoration: none;}
+*{box-sizing: border-box;}
+.link__def{text-decoration: none;}
 
-a{
-  text-decoration: none;
-}
-*{
-  box-sizing: border-box;
-}
-.dyj{
-  width: 50%;
-}
-.messi{
-  width: 100%;
-}

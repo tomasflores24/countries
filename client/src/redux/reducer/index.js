@@ -1,25 +1,22 @@
-import {GET_COUNTRIES, GET_COUNTRIE_DETAIL, GET_COUNTRIES_NAME, CREATE_ACTIVITY,CLEAR_DETAIL, IS_LOADING, GET_COUNTRIES_FILTER, GET_ACTIVITIES} from '../action';
+import {GET_COUNTRIES, GET_COUNTRIE_DETAIL, GET_COUNTRIES_NAME,CLEAR_DETAIL, IS_LOADING, GET_COUNTRIES_FILTER, GET_ACTIVITIES} from '../action';
 
 const initialState = {
     countries: [],
     countrie_detail: {},
-    create_activity: {},
     is_loading: false,
     countries_filter: [],
-
     activities: [],
 }
 
 const rootReducer = (state = initialState, { type , payload}) => {
-
   switch (type) {
 
-    case GET_COUNTRIES:
-      return {...state, countries : payload, countries_filter: payload};
+    case GET_COUNTRIES: return {...state, countries : payload, countries_filter: payload};
 
     case GET_COUNTRIES_FILTER:
       const {continent, nameOrPopulation, order} = payload;
-      const countries = (continent === 'ALL' ? [...state.countries] : [...state.countries].filter( c => c.continent === continent) );
+      const countries = continent === 'ALL' ? [...state.countries] : [...state.countries].filter( c => c.continent === continent);
+
       const obj = {
         [continent]: {
           name:{
@@ -34,27 +31,15 @@ const rootReducer = (state = initialState, { type , payload}) => {
       }
       return {...state, countries_filter: obj[continent][nameOrPopulation][order]};
       
-    case GET_COUNTRIE_DETAIL:
-        return {...state, countrie_detail: payload};
-
     case GET_COUNTRIES_NAME:
       if(!payload) return {...state}
       return {...state, countries_filter: payload}
-
-    case CREATE_ACTIVITY: // * _____MODIDICAR______________
-      return {...state};
-
-    case CLEAR_DETAIL: 
-      return {...state, countrie_detail: payload};
-
-    case GET_ACTIVITIES:
-      return {...state, activities: payload}
-
-    case IS_LOADING:
-      return {...state, is_loading: payload}
-    
-    default:
-      return state;
+        
+    case GET_COUNTRIE_DETAIL: return {...state, countrie_detail: payload};
+    case CLEAR_DETAIL: return {...state, countrie_detail: payload};
+    case GET_ACTIVITIES: return {...state, activities: payload}
+    case IS_LOADING: return {...state, is_loading: payload}
+    default: return state;
   }
 }
 

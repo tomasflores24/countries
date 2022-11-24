@@ -1,23 +1,21 @@
+import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import { Provider } from 'react-redux';
-
 import store from './redux/store';
-import NavBar from './components/NavBar';
+
 import LandingPage from './pages/LandingPage';
 import Main from './pages/Main';
 import CreateActivity from './pages/CreateActivity';
 import DetailContrie from './pages/DetailContrie';
 import Activities from './pages/Activities';
-import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        {/* <NavBar /> */}
         <Routes>
           <Route path='/' element={<LandingPage />}/>
           <Route path='/main' element={<Main />}/>
@@ -37,14 +35,7 @@ ReactDOM.render(
 reportWebVitals();
 
 // * Falta hacer ---
-// 
-// validar que no cree 2 actividades con el mismo nombre
-// 
-// configurar bien los seelct del MAIN 
-// 
-//  renderizar las actividades 
-//  
-//  
+//TODO  CAmbiar el area a KM2
 // 
 // 
 // 

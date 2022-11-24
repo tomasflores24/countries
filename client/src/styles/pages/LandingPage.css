@@ -1,9 +1,30 @@
-.link{
+.btn__landing{
+    position: absolute;
+    bottom: 50vh;
+    right: 47vw;
 
+    padding: 7px;
+
+    border: 1px solid white;
+    border-radius: 20px;
+    
+    background-color: transparent;
+    background-color: white;
+
+    font-size: xx-large;
+    font-family:  'Times New Roman', Times, serif;
+    
+    transition: .3s;
 }
-.link:active{
-    background-color: red;
+
+.btn__landing:hover{
+    border: 1px solid #ffffff9d;
+    background-color: #ffffff9d;
 }
-.link:hover{
-    opacity: 50%;
+.btn__landing:active{
+    outline: 2px solid black;
+    background-color: white;
 }
+
+
+.btn__link__landing{color: black;}

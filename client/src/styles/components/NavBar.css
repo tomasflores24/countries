@@ -1,13 +1,23 @@
 .navbar__container{
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    
     display: flex;
     justify-content: space-between;
-    background-color: lightgray;
+    
+    background-color: #3A4766;
     font-size: large;
 }
 
-.nav-active{
+.nav-active{    
+    border-bottom: 1px solid white;
     font-weight: bold;
 }
 .tr{
-    opacity: 70%;
+    border-bottom: 1px solid inherit;
+    opacity: 90%;
 }
+
+.navbar__container>a{color: whitesmoke;}
+

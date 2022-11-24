@@ -1,0 +1,49 @@
+.countrie__container{
+    position: relative;
+    display: inline-block;
+    width: 25vw;
+    margin: 20px 30px;
+    padding: 5px 15px 30px 15px;
+
+    border: 1px solid white;
+    border-radius: 5px 5px 5px 5px;
+    
+    color: white;
+    text-align: center;
+    opacity: 85%;
+    transition: .3s;
+}
+.countrie__container:hover{
+    box-shadow: inset 0 0 3px 0px black;
+    border-radius: 15px 40px 15px 40px;
+    opacity: 1000%;
+}
+
+.img__countrie{
+    width: 15vw;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.countrie__container>h5{background-attachment: red;}
+
+.countrie__container>p{
+    margin-bottom: 20px;
+    font-size: small;
+    font-weight: bold;
+}
+
+.link__detail{
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 15px;
+    
+    color: black;
+    background-color: rgb(236, 236, 236);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    transition: .3s;
+}
+.link__detail:hover{background-color: rgb(211, 211, 211);}
+.link__detail:active{
+    outline: 1px solid black;
+    color: green;
+}
