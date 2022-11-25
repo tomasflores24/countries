@@ -9,7 +9,6 @@ import '../styles/pages/Main.css'
 const LENGTH = 10;
 
 function Main() {
-    // * 
     const dispatch = useDispatch();
     const { is_loading, countries_filter} = useSelector(state => state );
     const continentsArray = ["North America", "South America", "Europe", "Oceania", "Africa", "Antarctica", "Asia"];

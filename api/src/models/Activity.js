@@ -2,10 +2,6 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
   sequelize.define('activity', {
-    // id: {
-    //   type: DataTypes.UUID,
-    //   primaryKey: true,
-    // },
     name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -19,14 +15,7 @@ module.exports = (sequelize) => {
     },
     season:{
         type: DataTypes.ENUM('summer', 'autumn', 'winter', 'spring'),    
-           
     }
     
   });
 };
-
-// ID
-// Nombre
-// Dificultad (Entre 1 y 5)
-// Duración
-// Temporada (Verano, Otoño, Invierno o Primavera)

@@ -22,7 +22,6 @@ module.exports = (sequelize) => {
     },
     capital: {
       type: DataTypes.STRING,
-      // type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
       
     },
@@ -37,11 +36,3 @@ module.exports = (sequelize) => {
     },
   });
 };
-// ID (Código de 3 letras) *
-// Nombre *
-// Imagen de la bandera *
-// Continente *
-// Capital *
-// Subregión
-// Área
-// Población

@@ -13,7 +13,4 @@ router.use('/countries', countries);
 router.use('/activities', activities);
 
 
-
-
-
 module.exports = router;

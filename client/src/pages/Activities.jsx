@@ -43,11 +43,5 @@ return (
     </>
   )
 }
-// countries [{…}, {…}]
-// difficulty1
-// duration: "3"
-//  1
-// name "nadar con tiburones 1"
-// season "summer"
 
 export default Activities
