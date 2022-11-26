@@ -13,7 +13,7 @@ export function getCountries(payload){
         
         axios('http://localhost:3001/countries')
         .then( resp => resp.data)
-        .then( countries =>dispatch({type:GET_COUNTRIES, payload: countries.all}))
+        .then( countries => dispatch({type:GET_COUNTRIES, payload: countries.all}))
         .catch( err => alert(`Error: ${err.message}`) )
         .finally( () => setTimeout(() => dispatch({type:IS_LOADING, payload: false}), 650) );
     }

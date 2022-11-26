@@ -58,9 +58,13 @@ function Main() {
         <option value="ASC" defaultValue={"ASC"}>ASC</option>
         <option value="DESC">DESC</option>
       </select>
+
     </div>
     <p className='length__countries'>Countries: {countries_filter.length}</p>
-    <div className='container__countries'>{showContries().map( c => <Countrie key={c.id} {...c} />)}</div>
+
+    <div className='container__countries'>
+      {showContries().map( c => <Countrie key={c.id} {...c} />)}
+    </div>
 
     <div className="btn__page">
       <button onClick={prev}> ← </button>

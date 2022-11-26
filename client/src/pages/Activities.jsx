@@ -8,7 +8,7 @@ function Activities() {
     const dispatch = useDispatch();
     const {activities} = useSelector( state => state);
     useEffect(() => dispatch( getActivities() ) , [dispatch]);
-  
+    
 return (
     <>
     <NavBar />
@@ -36,7 +36,6 @@ return (
             <div className="container__countries__detail">
                 {a.countries.map( (c,i) => <img key={i} src={c.img} alt="img activities" className='img__activities'/>)}
             </div>
-
         </div>
         ))}
     </div>

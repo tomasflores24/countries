@@ -58,12 +58,12 @@ const getxId = async(req, res) => {
     try {
         const {idPais} = req.params;
         const countrieXid = await Country.findByPk(idPais,{include: Activity});
-        return res.json({msj : 'getxId', infoxId:countrieXid});
+        return res.json({ infoxId:countrieXid });
     } catch (err) {
-        console.log(err.message);
-        return res.status(404).json({msjErr : err.message, msj:'No se encontro el pais por CODE', err});
+        return res.status(404).json({msjErr : err.message, msj:'No se encontro el pais por ID', err});
     }
 }
+
 
 module.exports = {
     getCountries,

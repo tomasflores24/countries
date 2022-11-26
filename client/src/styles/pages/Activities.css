@@ -22,12 +22,16 @@
     position: relative;
     display: flex;
     justify-content: space-around;
-    margin-bottom: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0 10px 15px 15px;
+    
 }
 
 .img__activities{
     width: 20%;
     border-radius: 5px;
+    margin: 0 15px 30px 15px;
 }
 
 .inf{

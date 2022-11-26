@@ -26,7 +26,7 @@ const rootReducer = (state = initialState, { type , payload}) => {
           population:{
             ASC: [...countries].sort((a, b) => (a.population < b.population ? -1 : 1)),
             DESC:[...countries].sort((a, b) => (a.population > b.population ? -1 : 1)),
-          }
+          },
         }
       }
       return {...state, countries_filter: obj[continent][nameOrPopulation][order]};
